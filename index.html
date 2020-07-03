@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+   <script>
+       let playerSelection;
+       let computerSelection = computerPlay();
+       let playerScore = 0;
+       let computerScore = 0;
+       let winner;
+       
+       function computerPlay(){
+           computerChoise = ['rock', 'paper', 'scissors'];
+           return computerChoise[Math.floor(Math.random()*computerChoise.length)];
+       }
+       
+       function playerRound(playerSelection, computerSelection){
+            if(playerSelection === computerSelection){
+                return `Draw!
+                Player Selection: ${playerSelection}
+                Computer Selection: ${computerSelection}
+                Player score: ${playerScore} : Computer score: ${computerScore}`;
+            }
+            else{
+                if(playerSelection === 'paper' && computerSelection === 'scissors'){
+                    return `You Loss! Scissors cuts Paper
+                    Player Selection: ${playerSelection}
+                    Computer Selection: ${computerSelection}
+                    Player score: ${playerScore} : Computer score: ${++computerScore}`; 
+                }
+                else if(playerSelection === 'rock' && computerSelection === 'paper'){
+                    return `You Loss! Paper beats Rock
+                    Player Selection: ${playerSelection}
+                    Computer Selection: ${computerSelection}
+                    Player score: ${playerScore} : Computer score: ${++computerScore}`; 
+                }
+                else if(playerSelection === 'scissors' && computerSelection === 'rock'){
+                    return `You Loss! Rock crushes Scissors
+                    Player Selection: ${playerSelection}
+                    Computer Selection: ${computerSelection}
+                    Player score: ${playerScore} : Computer score: ${++computerScore}`; 
+                }
+                else{
+                    return `You won!
+                    Player Selection: ${playerSelection}
+                    Computer Selection: ${computerSelection}
+                    Player score: ${++playerScore} : Computer score: ${computerScore}`;
+                    
+                }
+            }
+       }
+
+       
+        function playerPlay(){
+            if(playerSelection === 'rock' || playerSelection === 'paper' || playerSelection === 'scissors'){
+                return playerRound(playerSelection, computerSelection);
+            }
+            else{
+                return `You have to choose either rock, paper, or scissors`;
+            }
+       }
+       
+       function game(){
+           for(i=5; i>0; i--){
+            playerSelection = prompt('Your choise');
+            console.log(playerPlay()); 
+           }
+           if(computerScore === playerScore){
+                return `Draw!
+                ${playerScore} : ${computerScore}`;
+            }else if(computerScore > playerScore){
+                return winner = 'Computer won the game!';
+            }else{
+                return winner = 'You won the game!';
+            }
+       }
+       console.log(game());
+    //    console.log(playerPlay());
+    //    console.log(playerPlay());
+    //  console.log(playerRound(playerSelection, computerSelection));
+    //    computerPlay();
+   </script> 
+</body>
+</html>
